@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="static/css" href="StyleSheet.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/StyleSheet.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon2.png') }}">
+    <script src="{{ url_for('static', filename='css/drop.js') }}"></script>
+    <title>PREDICTOR</title>
+</head>
+<body>
+    
+        <div class="container">
+            <form id ="form1" action="{{ url_for('predict_datapoint') }}" method="post"><!-- Form action points to the predict_datapoint route -->
+                <h2>HOUSE PRICE PREDICTION</h2>
+                <div class="content">
+                    <div class="input-box">
+                        <label for="area">Area</label>
+                        <input type="text" id="area" name="area" placeholder="Enter value in sq.ft " required>
+                    </div>
+                    <div class="input-box">
+                        <label for="bedroom">Bedroom</label>
+                        <input type="text" id="bedroom" name="bedroom" placeholder="Enter No.of bedroom " required>
+                    </div>
+                    <div class="input-box">
+                        <label for="bathroom">Bathroom</label>
+                        <input type="text" id="bathroom" name="bathroom" placeholder="Enter No.of bathroom" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="property">Property</label>
+                        <select name="property" id="property">
+                            <option value="">Choose property type</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Independent Floor">Independent Floor</option>
+                            <option value="Independent House">Independent House</option>
+                            <option value="Penthouse">Penthouse</option>
+                            <option value="Studio Apartment">Studio Apartment</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                        
+                    </div>
+                    <div class="input-box">
+                        <label for="city">City</label>
+                        <select name="city" id="city">
+                            <option value="">Choose a city</option>
+                        </select>     
+                    </div>
+                    <div class="input-box">
+                        <label for="locality">Locality</label>
+                        <select name="locality" id="locality">
+                            <option value="" selected disabled>Choose a locality</option>
+                        </select>
+                    </div>
+                    <div class="rad">
+                        <span class="seller-type">Seller</span>
+                        <div class="seller-category">
+                            <input value="OWNER" type="radio" name="seller" id="Owner">
+                            <label for="Owner">Owner</label>
+                            <input value="AGENT" type="radio" name="seller"  id="Agent">
+                            <label for="Agent">Agent</label>
+                            <input value="BUILDER" type="radio" name="seller"  id="Builder">
+                            <label for="Builder">Builder</label> 
+                        </div>
+                        <br>
+                        <span class="layout-type">Layout</span>
+                        <div class="layout-category">
+                            <input value="BHK" type="radio" name="layout" id="BHK">
+                            <label for="BHK">BHK</label>
+                            <input value="RK" type="radio" name="layout" id="RK">
+                            <label for="RK">RK</label>
+                        </div>
+                        <br>
+                        <span class="furnish-type">Furnish-type</span>
+                        <div class="furnish-category">
+                            <input value="Furnished" type="radio" name="furnish" id="Furnished">
+                            <label for="Furnished">Furnished</label>
+                            <input value="Semi-Furnished" type="radio" name="furnish" id="Semi-Furnished">
+                            <label for="Semi-Furnished">Semi-Furnished</label>
+                            <input value="UnFurnished" type="radio" name="furnish" id="UnFurnished">
+                            <label for="UnFurnished">UnFurnished</label>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="alert">
+                        <p>By clicking Submit,You agree to our <a href="#">terms,</a><a href="#">privacy policies</a> and <a href="#">cookies policy.</a>And also you can opt at any time.</p>
+                    </div>
+                    <div class="button-container d-flex flex-row justify-content-center">
+                        <button id="togglebutton" type="submit">Predict </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+    <div class="image"></div>
+    <!--<div class="out1">
+        <p>MAKE YOUR DREAM AS REAL</p>
+        <div class="image"></div>
+    </div>
+    <script>
+        document.getElementById("form1").addEventListener("submit", function(event) {
+            // Prevent default form submission behavior
+            event.preventDefault(); 
+            // Get form data
+            var formData = new FormData(document.getElementById("form1"));
+            // Send form data to the predict_datapoint route using fetch API
+            fetch("{{ url_for('predict_datapoint') }}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If response is successful, redirect to the loader page
+                    window.location.href = "{{ url_for('load_page') }}";
+                } else {
+                    // Handle error
+                    console.error('Error:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>-->
+</body>
+</html>
